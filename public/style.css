@@ -1,3 +1,17 @@
+/* smooth native cross-fade between pages (Chromium/Safari; ignored elsewhere) */
+@view-transition {
+    navigation: auto;
+}
+
+/* respect reduced-motion: skip the cross-fade */
+@media (prefers-reduced-motion: reduce) {
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+}
+
 /* self-hosted JetBrains Mono — subset to latin + the glyphs the site uses */
 @font-face {
     font-family: 'JetBrains Mono';
