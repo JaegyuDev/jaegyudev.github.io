@@ -136,6 +136,8 @@ a.contact-value:hover {
     font-size: 0.82rem;
     line-height: 1.6rem;
     user-select: none;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* hidden but still occupies space, so slugs stay aligned whether or not it shows */
