@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Browser port of Lofter1/anyflip-downloader (GPLv3).
 // All AnyFlip requests go through the Cloudflare relay for CORS.
-
-const RELAY = 'https://anyflip-relay.CHANGEME.workers.dev';
+const RELAY = 'https://af-relay.jaegyu.dev';
 const RETRIES = 2, RETRY_DELAY = 1000;
 
 const $ = id => document.getElementById(id);
