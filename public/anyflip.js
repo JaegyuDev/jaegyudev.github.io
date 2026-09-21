@@ -2,7 +2,7 @@
 // Browser port of Lofter1/anyflip-downloader (GPLv3).
 // All AnyFlip requests go through the Cloudflare relay for CORS.
 
-const RELAY = 'https://af-relay.jaegyu.dev';
+const RELAY = 'https://anyflip-relay.CHANGEME.workers.dev';
 const RETRIES = 2, RETRY_DELAY = 1000;
 
 const $ = id => document.getElementById(id);
@@ -45,7 +45,7 @@ function parseConfig(js) {
     const count = js.match(/"?(?:bookConfig\.)?(?:total)?[Pp]ageCount"?[=:]"?(\d+)/);
     if (!count) throw new Error('page count not found in config.js');
     const title = js.match(/"?(?:bookConfig\.)?bookTitle"?=\s*"(.*?)"|"title":"(.*?)"/);
-    const names = [...js.matchAll(/"n":\["(.*?)"\]/g)].map(m => m[1].split('","')[0]);
+    const names = [...js.matchAll(/"n":\["(.*?)"\]/g)].map(m => unquote(m[1].split('","')[0]));
     return { count: +count[1], title: title ? unquote(title[1] ?? title[2]) : '', names };
 }
 
@@ -54,8 +54,8 @@ function cleanURL(raw) {
     let s = raw;
     try { s = decodeURI(raw); } catch { }
     const u = new URL(s.replaceAll('\\', '/'));
-    const seg = u.pathname.split('/');
-    u.pathname = seg.filter((x, i) => i === 0 || (x && x !== seg[i - 1])).join('/');
+    const seg = u.pathname.split('/').filter(Boolean);
+    u.pathname = '/' + seg.filter((x, i) => x !== seg[i - 1]).join('/');
     return u.href;
 }
 
