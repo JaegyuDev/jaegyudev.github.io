@@ -190,3 +190,85 @@ a.contact-value:hover {
         opacity: 0;
     }
 }
+/* tool pages (anyflip): label/input rows in the same columns as .contact */
+.tool {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 300;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+}
+
+.field-label {
+    width: 10ch;
+    flex-shrink: 0;
+    color: var(--subtle);
+}
+
+.field input {
+    flex: 1;
+    min-width: 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--muted);
+    color: var(--text);
+    font: inherit;
+    padding: 0.15rem 0;
+    outline: none;
+}
+
+.field input:focus {
+    border-bottom-color: var(--foam);
+}
+
+.field input::placeholder {
+    color: var(--muted);
+}
+
+#go {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: var(--rose);
+    font: inherit;
+    padding: 0.3rem 0;
+    cursor: pointer;
+}
+
+#go:hover:not(:disabled),
+#go:focus-visible {
+    color: var(--foam);
+    outline: none;
+}
+
+#go:disabled {
+    color: var(--muted);
+    cursor: default;
+}
+
+.bar {
+    height: 2px;
+    background: var(--muted);
+}
+
+.bar > div {
+    height: 100%;
+    width: 0;
+    background: var(--foam);
+    transition: width 0.15s;
+}
+
+.log {
+    font: inherit;
+    font-size: 0.7rem;
+    color: var(--subtle);
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 8rem;
+    overflow-y: auto;
+}

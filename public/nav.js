@@ -2,8 +2,9 @@
 const fmt = slug => (slug === '/' ? '~' : '~' + slug);
 
 const path = document.body.dataset.path || '/';
-const pageIndex = Math.max(0, links.findIndex(l => l.slug === path)); // the page you're on, gets the *
-let current = pageIndex;                                              // where the ❯ selector sits
+const pageIndex = links.findIndex(l => l.slug === path); // the page you're on, gets the * (-1 for unlisted pages)
+const home = Math.max(0, pageIndex);                     // where the ❯ rests when idle
+let current = home;                                      // where the ❯ selector sits
 
 const menu = document.getElementById('menu');
 const chevron = '❯';
@@ -32,6 +33,7 @@ function render() {
 const STEP = { ArrowDown: 1, ArrowUp: -1 };
 
 addEventListener('keydown', e => {
+    if (e.target.closest?.('input, textarea, select, button')) return; // let form fields keep their keys
     if (e.key in STEP) {
         e.preventDefault();
         select((current + STEP[e.key] + links.length) % links.length);
@@ -46,6 +48,6 @@ menu.addEventListener('mouseover', e => {
     const row = e.target.closest('.row');
     if (row) select([...menu.children].indexOf(row));
 });
-menu.addEventListener('mouseleave', () => select(pageIndex));
+menu.addEventListener('mouseleave', () => select(home));
 
 render();
