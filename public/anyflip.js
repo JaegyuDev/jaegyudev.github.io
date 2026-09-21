@@ -2,7 +2,7 @@
 // Browser port of Lofter1/anyflip-downloader (GPLv3).
 // All AnyFlip requests go through the Cloudflare relay for CORS.
 
-const RELAY = 'https://anyflip-relay.CHANGEME.workers.dev';
+const RELAY = 'https://af-relay.jaegyu.dev';
 const RETRIES = 2, RETRY_DELAY = 1000;
 
 const $ = id => document.getElementById(id);
@@ -52,7 +52,7 @@ function parseConfig(js) {
 // Resolves ../ and drops repeated path segments (files/files/...), same as the Go version.
 function cleanURL(raw) {
     let s = raw;
-    try { s = decodeURI(raw); } catch {}
+    try { s = decodeURI(raw); } catch { }
     const u = new URL(s.replaceAll('\\', '/'));
     const seg = u.pathname.split('/');
     u.pathname = seg.filter((x, i) => i === 0 || (x && x !== seg[i - 1])).join('/');
