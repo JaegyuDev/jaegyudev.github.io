@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jaegyu.dev/ocr</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Pull the text out of a photo, right in the browser." />
+    <link rel="preload" href="/assets/fonts/JetBrainsMono-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="scroll" data-path="/ocr">
+
+    <div class="container">
+        <div class="top">
+            <h1 class="name">ocr<span>.</span></h1>
+            <p class="tagline">photo in, text out.<br>runs on your device, nothing is uploaded.</p>
+        </div>
+
+        <div class="tool">
+            <div class="btns">
+                <button class="btn" id="cam" type="button">❯ camera</button>
+                <button class="btn" id="pick" type="button">❯ file</button>
+                <button class="btn" id="mode" type="button">❯ mode: auto</button>
+            </div>
+            <input id="f-cam" type="file" accept="image/*" capture="environment" hidden />
+            <input id="f-file" type="file" accept="image/*" hidden />
+            <img id="prev" alt="" hidden />
+            <div class="bar"><div id="bar"></div></div>
+            <div class="meta" id="meta">pick, drop or paste an image.</div>
+            <textarea id="out" spellcheck="false" placeholder="text shows up here"></textarea>
+            <div class="btns">
+                <button class="btn" id="copy" type="button">❯ copy</button>
+                <button class="btn" id="clear" type="button">❯ clear</button>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="menu" id="menu"></div>
+        </div>
+    </div>
+
+    <span class="location">west michigan</span>
+    <script src="links.js"></script>
+    <script src="nav.js"></script>
+    <script src="vendor/tesseract/tesseract.min.js"></script>
+    <script src="ocr.js"></script>
+</body>
+
+</html>

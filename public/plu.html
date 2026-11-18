@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jaegyu.dev/plu</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Search produce PLU codes by number or name." />
+    <link rel="preload" href="/assets/fonts/JetBrainsMono-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="scroll" data-path="/plu">
+
+    <div class="container">
+        <div class="top">
+            <h1 class="name">plu<span>.</span></h1>
+            <p class="tagline">produce codes, by number or name.<br>data from the ifps plu database.</p>
+        </div>
+
+        <div class="tool">
+            <label class="field"><span class="field-label">search</span>
+                <input id="q" type="text" autofocus autocomplete="off" autocapitalize="off" spellcheck="false"
+                    enterkeyhint="search" placeholder="4011 or banana" /></label>
+            <button class="btn" id="org" type="button">❯ organic: off</button>
+            <div class="meta" id="meta"></div>
+            <div class="results" id="results" aria-live="polite"></div>
+        </div>
+
+        <div class="bottom">
+            <div class="menu" id="menu"></div>
+        </div>
+    </div>
+
+    <span class="location">west michigan</span>
+    <script src="links.js"></script>
+    <script src="nav.js"></script>
+    <script src="plu.js"></script>
+</body>
+
+</html>
