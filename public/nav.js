@@ -1,8 +1,9 @@
-// `links` is defined in links.js, which must be loaded before this file.
+// `links` and `toolLinks` are defined in links.js, which must be loaded before this file.
 const fmt = slug => (slug === '/' ? '~' : '~' + slug);
 
 const path = document.body.dataset.path || '/';
-const pageIndex = links.findIndex(l => l.slug === path); // the page you're on, gets the * (-1 for unlisted pages)
+const list = document.body.dataset.nav === 'tools' ? toolLinks : links; // data-nav="tools" swaps in the tool menu
+const pageIndex = list.findIndex(l => l.slug === path); // the page you're on, gets the * (-1 for unlisted pages)
 const home = Math.max(0, pageIndex);                     // where the ❯ rests when idle
 let current = home;                                      // where the ❯ selector sits
 
@@ -15,7 +16,7 @@ function select(i) {
 }
 
 function render() {
-    menu.innerHTML = links.map((link, i) => {
+    menu.innerHTML = list.map((link, i) => {
         const active = i === current;
         const here = i === pageIndex;
         const external = link.url.startsWith('http');
@@ -36,7 +37,7 @@ addEventListener('keydown', e => {
     if (e.target.closest?.('input, textarea, select, button')) return; // let form fields keep their keys
     if (e.key in STEP) {
         e.preventDefault();
-        select((current + STEP[e.key] + links.length) % links.length);
+        select((current + STEP[e.key] + list.length) % list.length);
     } else if (e.key === 'Enter' && !menu.contains(document.activeElement)) {
         // arrow-key model: activate the highlighted row (browser handles Enter if a row is focused)
         menu.children[current]?.click();

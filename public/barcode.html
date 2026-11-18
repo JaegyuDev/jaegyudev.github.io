@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jaegyu.dev/barcode</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Make Code 128 barcodes for a second device to scan." />
+    <link rel="preload" href="/assets/fonts/JetBrainsMono-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/favicon-180.png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="scroll" data-path="/barcode" data-nav="tools">
+
+    <div class="container">
+        <div class="top">
+            <h1 class="name">barcode<span>.</span></h1>
+            <p class="tagline">one id per line, code 128.<br>just the bars, for scanning off the screen.</p>
+        </div>
+
+        <div class="tool">
+            <textarea id="ids" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="200015192938572"></textarea>
+            <div class="btns">
+                <button class="btn" id="paste" type="button">❯ paste</button>
+                <button class="btn" id="clear" type="button">❯ clear</button>
+            </div>
+            <div class="meta" id="meta"></div>
+            <div id="codes"></div>
+        </div>
+
+        <div class="bottom">
+            <div class="menu" id="menu"></div>
+        </div>
+    </div>
+
+    <span class="location">west michigan</span>
+    <script src="links.js"></script>
+    <script src="nav.js"></script>
+    <script src="barcode.js"></script>
+</body>
+
+</html>

@@ -382,3 +382,11 @@ textarea:focus {
 textarea::placeholder {
     color: var(--muted);
 }
+
+a.btn {
+    text-decoration: none;
+}
+
+a.btn .meta {
+    margin-left: 0.6rem;
+}
